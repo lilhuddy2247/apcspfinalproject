@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h1>Premium Home & Auto Care</h1>
+        <p>Book local professional services on demand.</p>
+        {% if not current_user.is_authenticated %}
+            <p><a class="button" href="{{ url_for('register') }}">Create an Account</a></p>
+        {% else %}
+            <p><a class="button" href="{{ url_for('dashboard') }}">Go to Dashboard</a></p>
+        {% endif %}
+        <ul>
+            <li>🌱 Weeding</li>
+            <li>🪟 Window Washing</li>
+            <li>🎨 Painting</li>
+            <li>🚗 Car Detailing</li>
+        </ul>
+    </div>
+{% endblock %}

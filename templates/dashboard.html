@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h2>Book a New Service</h2>
+        <p>Address: {{ current_user.address or 'No address set. Update your profile.' }}</p>
+        <form method="POST">
+            <div class="form-group">
+                <label for="service_type">Choose Service</label>
+                <select id="service_type" name="service_type" required>
+                    <option value="Weeding">🌱 Weeding</option>
+                    <option value="Window Washing">🪟 Window Washing</option>
+                    <option value="Painting">🎨 Painting</option>
+                    <option value="Car Detailing">🚗 Car Detailing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="scheduled_date">Preferred Date</label>
+                <input type="date" id="scheduled_date" name="scheduled_date" required>
+            </div>
+            <div class="form-group">
+                <label for="scheduled_time">Preferred Time Slot</label>
+                <select id="scheduled_time" name="scheduled_time" required>
+                    <option value="Morning (8 AM - 12 PM)">Morning (8 AM - 12 PM)</option>
+                    <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="notes">Special Instructions</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+            </div>
+            <button class="button" type="submit">Send Request to Admin</button>
+        </form>
+    </div>
+    <div class="card">
+        <h2>Your Requests</h2>
+        {% if bookings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in bookings %}
+                        <tr>
+                            <td>{{ b.service_type }}</td>
+                            <td>{{ b.scheduled_date }}</td>
+                            <td>{{ b.scheduled_time }}</td>
+                            <td>{{ b.status }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No requests yet. Submit a booking above.</p>
+        {% endif %}
+    </div>
+{% endblock %}

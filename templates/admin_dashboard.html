@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h2>🛠️ Admin Dashboard - Live Booking Feeds</h2>
+        {% if bookings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Job</th>
+                        <th>When Needed</th>
+                        <th>Where (Address)</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for b in bookings %}
+                        <tr>
+                            <td>{{ b.client.username }}<br><small>{{ b.client.email }}</small></td>
+                            <td>{{ b.service_type }}</td>
+                            <td>{{ b.scheduled_date }} {{ b.scheduled_time }}</td>
+                            <td>📍 {{ b.client.address or 'No address' }}</td>
+                            <td>{{ b.notes or 'None' }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No booking requests have been submitted yet.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card">
+        <h2>Update Address</h2>
+        <form method="POST">
+            <div class="form-group">
+                <label for="address">Service Address</label>
+                <input type="text" id="address" name="address" value="{{ current_user.address }}">
+            </div>
+            <button class="button" type="submit">Save Changes</button>
+        </form>
+    </div>
+{% endblock %}

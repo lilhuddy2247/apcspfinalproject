@@ -40,4 +40,3 @@ A simple Flask web app for booking home and auto care services, with user regist
 
 - The first user to register becomes the admin automatically.
 - Admin users can view all booking requests at `/admin/dashboard`.
-- Change `SECRET_KEY` in `app.py` before deploying to production.

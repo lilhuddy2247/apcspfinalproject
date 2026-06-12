@@ -1,4 +1,4 @@
-# Home Services Portal
+# Home Services
 
 A simple Flask web app for booking home and auto care services, with user registration, login, profile management, booking requests, and an admin dashboard.
 
